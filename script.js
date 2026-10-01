@@ -18,4 +18,24 @@ function renderContactos() {
     });
 }
 
+function agregarContacto() {
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const correo = document.getElementById('correo').value;
+    
+    if(!nombre || !telefono || !correo) {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+    
+    const nuevoId = contactos.length ? contactos[contactos.length-1].id + 1 : 1;
+    contactos.push({ id: nuevoId, nombre, telefono, correo });
+    
+    document.getElementById('nombre').value = '';
+    document.getElementById('telefono').value = '';
+    document.getElementById('correo').value = '';
+    
+    renderContactos();
+}
+
 renderContactos();
