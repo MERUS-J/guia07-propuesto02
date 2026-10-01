@@ -13,6 +13,7 @@ function renderContactos() {
             <h3>${c.nombre}</h3>
             <p>Tel: ${c.telefono}</p>
             <p>Email: ${c.correo}</p>
+            <button class="btn" style="margin-top: 10px;" onclick="eliminarContacto(${c.id})">Eliminar</button>
         `;
         lista.appendChild(div);
     });
@@ -35,6 +36,11 @@ function agregarContacto() {
     document.getElementById('telefono').value = '';
     document.getElementById('correo').value = '';
     
+    renderContactos();
+}
+
+function eliminarContacto(id) {
+    contactos = contactos.filter(c => c.id !== id);
     renderContactos();
 }
 
